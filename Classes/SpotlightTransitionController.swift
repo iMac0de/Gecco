@@ -50,7 +50,7 @@ class SpotlightTransitionController: NSObject, UIViewControllerAnimatedTransitio
             destination.viewDidAppear(true)
             source.viewDidDisappear(true)
             transitionContext.completeTransition(true)
-            delegate?.spotlightTransitionWillPresent(self, transitionContext: transitionContext)
+            self.delegate?.spotlightTransitionWillPresent(self, transitionContext: transitionContext)
         })
         
     }
