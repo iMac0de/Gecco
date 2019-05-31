@@ -66,23 +66,13 @@ class SpotlightTransitionController: NSObject, UIViewControllerAnimatedTransitio
         
         let duration = transitionDuration(using: transitionContext)
         
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            transitionContext.completeTransition(true)
-        }
-        { // In transation
-            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(),
-                animations: {
-                    source.view.alpha = 0.0
-                },
-                completion: { _ in
-                    destination.viewDidAppear(true)
-                    source.viewDidDisappear(true)
-                }
-            )
-            delegate?.spotlightTransitionWillDismiss(self, transitionContext: transitionContext)
-        }()
-        CATransaction.commit()
+        UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(), animations: {
+            source.view.alpha = 0.0
+        }, completion: { _ in
+            destination.viewDidAppear(true)
+            source.viewDidDisappear(true)
+            self.delegate?.spotlightTransitionWillDismiss(self, transitionContext: transitionContext)
+        })
     }
     
     func animationEnded(_ transitionCompleted: Bool) {
