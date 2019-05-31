@@ -72,6 +72,7 @@ class SpotlightTransitionController: NSObject, UIViewControllerAnimatedTransitio
             destination.viewDidAppear(true)
             source.viewDidDisappear(true)
             transitionContext.completeTransition(true)
+            source.removeFromParent()
             self.delegate?.spotlightTransitionWillDismiss(self, transitionContext: transitionContext)
         })
     }
