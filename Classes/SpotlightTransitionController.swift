@@ -56,25 +56,25 @@ class SpotlightTransitionController: NSObject, UIViewControllerAnimatedTransitio
     }
     
     fileprivate func animateTransitionForDismiss(_ transitionContext: UIViewControllerContextTransitioning) {
-        guard let source = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
-            let destination = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
-                fatalError()
-        }
-        
-        source.viewWillDisappear(true)
-        destination.viewWillAppear(true)
-        
-        let duration = transitionDuration(using: transitionContext)
-        
-        UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(), animations: {
-            source.view.alpha = 0.0
-        }, completion: { _ in
-            destination.viewDidAppear(true)
-            source.viewDidDisappear(true)
-            transitionContext.completeTransition(true)
-            source.removeFromParent()
-            self.delegate?.spotlightTransitionWillDismiss(self, transitionContext: transitionContext)
-        })
+//        guard let source = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
+//            let destination = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
+//                fatalError()
+//        }
+//        
+//        source.viewWillDisappear(true)
+//        destination.viewWillAppear(true)
+//        
+//        let duration = transitionDuration(using: transitionContext)
+//        
+//        UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(), animations: {
+//            source.view.alpha = 0.0
+//        }, completion: { _ in
+//            destination.viewDidAppear(true)
+//            source.viewDidDisappear(true)
+//            transitionContext.completeTransition(true)
+//            source.removeFromParent()
+//            self.delegate?.spotlightTransitionWillDismiss(self, transitionContext: transitionContext)
+//        })
     }
     
     func animationEnded(_ transitionCompleted: Bool) {
